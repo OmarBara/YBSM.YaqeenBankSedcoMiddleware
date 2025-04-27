@@ -1,8 +1,9 @@
 ﻿using System;
+using Team.Development.Domain.Common;
 
 namespace Core.Domain.Entities
 {
-    public  class AuthSession
+    public  class AuthSession : AuditableEntity
     {
         public long Id { get; set; }
         public string RefreshToken { get; set; }
@@ -11,7 +12,6 @@ namespace Core.Domain.Entities
         public string ClientIpAddress { get; set; }
         public string UserAgent { get; set; }
         public string MetaData { get; set; }
-
         public Guid? MerchantId { get; set; }
         //public virtual  Merchant? Merchant { get; set; }
 

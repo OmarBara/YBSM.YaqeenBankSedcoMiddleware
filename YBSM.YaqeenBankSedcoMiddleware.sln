@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YBSM.Infrastructure.Service
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YBSM.Infrastructure.EmailService", "YBSM.EmailService\YBSM.Infrastructure.EmailService.csproj", "{B4129C71-F5C2-4631-B3DA-7BD4C813903C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Team.Development.OtpVerification", "..\..\abourtema\Team.Development\Team.Development.OtpVerification\Team.Development.OtpVerification.csproj", "{91CB5D5C-2CF1-48F5-985C-52AB6C9C8318}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{B4129C71-F5C2-4631-B3DA-7BD4C813903C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4129C71-F5C2-4631-B3DA-7BD4C813903C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4129C71-F5C2-4631-B3DA-7BD4C813903C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91CB5D5C-2CF1-48F5-985C-52AB6C9C8318}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91CB5D5C-2CF1-48F5-985C-52AB6C9C8318}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91CB5D5C-2CF1-48F5-985C-52AB6C9C8318}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91CB5D5C-2CF1-48F5-985C-52AB6C9C8318}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +75,7 @@ Global
 		{D1B8C6D9-753E-431F-9BB0-9F9E0ABE40DC} = {B023FC10-7759-4E4D-80FF-C08FFD0F4842}
 		{261AAF5D-09A0-481A-B3CB-32355155D0B7} = {B023FC10-7759-4E4D-80FF-C08FFD0F4842}
 		{B4129C71-F5C2-4631-B3DA-7BD4C813903C} = {B023FC10-7759-4E4D-80FF-C08FFD0F4842}
+		{91CB5D5C-2CF1-48F5-985C-52AB6C9C8318} = {B023FC10-7759-4E4D-80FF-C08FFD0F4842}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AAE0D8F6-AF01-40FB-9E19-3F538B7722A2}

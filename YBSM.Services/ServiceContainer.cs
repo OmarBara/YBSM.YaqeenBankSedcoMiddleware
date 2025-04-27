@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using YBSM.Infrastructure.Services.Services;
 
 namespace Infrastructure.Services
 {
@@ -16,12 +17,14 @@ namespace Infrastructure.Services
     {
         public static void AddServicesRegistration(this IServiceCollection services, IConfiguration configuration)
         {
-           /* services.AddTransient<CategoryServices>();
-            services.AddTransient<StoreServices>();
-            services.AddTransient<MerchantServices>();
-            services.AddTransient<ActivityServices>();
-            services.AddTransient<SharedServices>();*/
             services.AddTransient<UserServices>();
+            services.AddTransient<SedcoServices>();
+
+            /* services.AddTransient<CategoryServices>();
+             services.AddTransient<StoreServices>();
+             services.AddTransient<MerchantServices>();
+             services.AddTransient<ActivityServices>();*/
+
 
             services.AddTransient<CacheProvider>();
             services.AddTransient<IPasswordHasher, PasswordHasher>();

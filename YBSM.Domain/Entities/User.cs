@@ -1,10 +1,11 @@
 ﻿using System;
 using Core.Domain.Enum;
 using Core.Domain.ModelDTO;
+using Team.Development.Domain.Common;
 
 namespace Core.Domain.Entities
 {
-    public class User
+    public class User : AuditableEntity
     {
         public User(AddUserRequestDto addUserRequestDto, Guid addedBy)
         {
