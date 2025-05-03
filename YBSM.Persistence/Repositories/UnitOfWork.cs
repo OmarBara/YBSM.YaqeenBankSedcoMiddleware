@@ -1,6 +1,8 @@
 ﻿using System.Threading.Tasks;
 using Core.Application.Repositories;
 using HRM.Persistence;
+using YBSM.Core.Aplication.Interface;
+using YBSM.Infrastructure.Persistence.Repositories;
 
 namespace Infrastructure.Persistence.Repositories
 {
@@ -37,73 +39,73 @@ namespace Infrastructure.Persistence.Repositories
             }
         }
 
-        /* private ICategoryRepository _categoryRepository;
+         private ILypayTransactionRepository _lypayTransactionRepository;
 
-         public ICategoryRepository CategoryRepository
-         {
+         public ILypayTransactionRepository LypayTransactionRepository
+        {
              get
              {
-                 if (_categoryRepository != null)
-                     return _categoryRepository;
-                 return _categoryRepository = new CategoryRepository(_appDbContext);
-             }
-         }               
-
-
-         private IStoreInfoRepository _storeInfoRepository;
-
-         public IStoreInfoRepository StoreInfoRepository
-         {
-             get
-             {
-                 if (_storeInfoRepository != null)
-                     return _storeInfoRepository;
-                 return _storeInfoRepository = new StoreInfoRepository(_appDbContext);
+                 if (_lypayTransactionRepository != null)
+                     return _lypayTransactionRepository;
+                 return _lypayTransactionRepository = new LypayTransactionRepository(_appDbContext);
              }
          }
 
 
+        /*private IStoreInfoRepository _storeInfoRepository;
 
-
-         private IMerchantRepository _merchantRepository;
-
-         public IMerchantRepository MerchantRepository
-         {
-             get
-             {
-                 if (_merchantRepository != null)
-                     return _merchantRepository;
-                 return _merchantRepository = new MerchantRepository(_appDbContext);
-             }
-         }
-
-
-         private IImageStoreRepository _imageStoreRepository;
-
-         public IImageStoreRepository ImageStoreRepository
-         {
-             get
-             {
-                 if (_imageStoreRepository != null)
-                     return _imageStoreRepository;
-                 return _imageStoreRepository = new ImageStoreRepository(_appDbContext);
-             }
-         }
+        public IStoreInfoRepository StoreInfoRepository
+        {
+            get
+            {
+                if (_storeInfoRepository != null)
+                    return _storeInfoRepository;
+                return _storeInfoRepository = new StoreInfoRepository(_appDbContext);
+            }
+        }
 
 
 
-         private IActivityRepository _activityRepository;
 
-         public IActivityRepository ActivityRepository
-         {
-             get
-             {
-                 if (_activityRepository != null)
-                     return _activityRepository;
-                 return _activityRepository = new ActivityRepository(_appDbContext);
-             }
-         }
-         */
+        private IMerchantRepository _merchantRepository;
+
+        public IMerchantRepository MerchantRepository
+        {
+            get
+            {
+                if (_merchantRepository != null)
+                    return _merchantRepository;
+                return _merchantRepository = new MerchantRepository(_appDbContext);
+            }
+        }
+
+
+        private IImageStoreRepository _imageStoreRepository;
+
+        public IImageStoreRepository ImageStoreRepository
+        {
+            get
+            {
+                if (_imageStoreRepository != null)
+                    return _imageStoreRepository;
+                return _imageStoreRepository = new ImageStoreRepository(_appDbContext);
+            }
+        }
+
+
+
+        private IActivityRepository _activityRepository;
+
+        public IActivityRepository ActivityRepository
+        {
+            get
+            {
+                if (_activityRepository != null)
+                    return _activityRepository;
+                return _activityRepository = new ActivityRepository(_appDbContext);
+            }
+        }
+        */
 
         public async Task SaveChangesAsync()
         {

@@ -42,7 +42,7 @@ namespace YBSM.Infrastructure.Services.Services
         }
 
 
-        public async Task<AddUserResponseDto> ChekCustomer(ChekUserRequestDto chekUserRequestDto, Guid addedBy)
+       /* public async Task<AddUserResponseDto> ChekCustomer(ChekUserRequestDto chekUserRequestDto, Guid addedBy)
         {
             var user = await _unitOfWork.UserRepository.FindAccount(addUserRequest.Email);
 
@@ -65,8 +65,8 @@ namespace YBSM.Infrastructure.Services.Services
                 CreatedDate = newUser.CreatedDate,
                 PhoneNumber = newUser.PhoneNumber,
                 UserRole = newUser.UserRole
-            };
-        }
+            };*/
+        /*}*/
 
 
     }

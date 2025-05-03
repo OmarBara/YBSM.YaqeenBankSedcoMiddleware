@@ -1,12 +1,15 @@
 ﻿using Core.Domain.Settings;
-using GloboTicket.TicketManagement.Api.Middleware;
+using FluentValidation.AspNetCore;
 using Infrastructure.EmailService;
 using Infrastructure.Persistence;
 using Infrastructure.Services;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
+using Web.API.ExceptionHandler;
+using Web.API.Validatiors;
+using YBSM.YaqeenBankSedcoMiddleware.Api.Middleware;
 
 namespace HRM.API
 {
@@ -22,12 +25,25 @@ namespace HRM.API
         }
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("Open", builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().SetIsOriginAllowed(_ => true));
+            });
+
+            services.AddControllers(options => { options.Filters.Add(new HttpResponseExceptionActionFilter()); });
+           
+            
+            //services.AddFluentValidationAutoValidation();
+            //services.AddFluentValidationClientsideAdapters();
+
+
+
             AddSwagger(services);
             services.AddControllersWithViews()
                 .AddNewtonsoftJson(options =>
                     options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore
 );
-
+           
 
             services.Configure<JWTSettings>(configRoot.GetSection("JWTSettings"));
             services.AddSingleton<JWTSettings>();
@@ -38,14 +54,101 @@ namespace HRM.API
             services.AdPersistenceRegistration(configRoot);
             services.AddServicesRegistration(configRoot);
             services.AddEmailServicesRegistration(configRoot);
-
+            services.AddValidators();
+            services.AddControllers(options =>
+            {
+                options.Filters.Add<ValidationExceptionFilter>();
+            });
 
             services.AddControllers();
             services.AddCors(options =>
             {
                 options.AddPolicy("Open", builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             });
+
+
+            
+
+            /* services.Configure<ApiBehaviorOptions>(options =>
+             {
+                 options.InvalidModelStateResponseFactory = context =>
+                 {
+                     var firstError = context
+                         .ModelState
+                         .Values
+                         .SelectMany(v => v.Errors)
+                         .Select((ModelError e) =>
+                         {
+                             // Try to extract custom error code and message from Exception.Data
+                             if (e.Exception?.Data != null &&
+                                 e.Exception.Data.Contains("Code") &&
+                                 e.Exception.Data.Contains("Message"))
+                             {
+                                 return new
+                                 {
+                                     Code = e.Exception.Data["Code"]?.ToString() ?? "E0",
+                                     Message = e.Exception.Data["Message"]?.ToString() ?? e.ErrorMessage
+                                 };
+                             }
+
+                             // Default fallback
+                             return new
+                             {
+                                 Code = "E0",
+                                 Message = e.ErrorMessage
+                             };
+                         })
+                         .FirstOrDefault();
+
+                     return new BadRequestObjectResult(new
+                     {
+                         Result = new[] { firstError }
+                     });
+                 };
+             });*/
+
+
+            /* services.Configure<ApiBehaviorOptions>(options =>
+             {
+                 options.InvalidModelStateResponseFactory = context =>
+                 {
+                     var firstError = context.ModelState
+                         .Values
+                         .SelectMany(v => v.Errors)
+                         .Select((ModelError e) =>
+                         {
+                             // Try to extract custom error code and message from Exception.Data
+                             if (e.Exception?.Data != null &&
+                                 e.Exception.Data.Contains("Code") &&
+                                 e.Exception.Data.Contains("Message"))
+                             {
+                                 return new
+                                 {
+                                     Code = e.Exception.Data["Code"]?.ToString() ?? "E0",
+                                     Message = e.Exception.Data["Message"]?.ToString() ?? e.ErrorMessage
+                                 };
+                             }
+
+                             // Default fallback
+                             return new
+                             {
+                                 Code = "E0",
+                                 Message = e.ErrorMessage
+                             };
+                         })
+                         .FirstOrDefault();
+
+                     return new BadRequestObjectResult(new
+                     {
+                         Result = new[] { firstError }
+                     });
+                 };
+             });*/
+
+
         }
+
+
 
         private void AddSwagger(IServiceCollection services)
         {

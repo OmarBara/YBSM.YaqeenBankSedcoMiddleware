@@ -1,11 +1,11 @@
-﻿using GloboTicket.TicketManagement.Application.Exceptions;
+﻿using YBSM.YaqeenBankSedcoMiddleware.Application.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace GloboTicket.TicketManagement.Api.Middleware
+namespace YBSM.YaqeenBankSedcoMiddleware.Api.Middleware
 {
     public class ExceptionHandlerMiddleware
     {

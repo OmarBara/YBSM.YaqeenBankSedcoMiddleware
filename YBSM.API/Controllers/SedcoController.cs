@@ -17,7 +17,7 @@ namespace YBSM.API.Controllers
         {
             _sedcoServices = sedcoServices;
         }
-
+/*
         [HttpPost]
         //[Authorize]
         public async Task<AddUserResponseDto> ChekCustomer(ChekUserRequestDto chekUserRequestDto)
@@ -25,7 +25,7 @@ namespace YBSM.API.Controllers
             var user = CurrentUserModel.GetUser(User);
 
             return await _sedcoServices.ChekCustomer(chekUserRequestDto, user.UserId);
-        }
+        }*/
 
     }
 }

@@ -37,17 +37,18 @@ namespace Core.Domain.Wrappers
 
     public class OperationResult<T> : OperationResult
     {
-        public OperationResult(ResultType type, List<string> messages, T content, string? traceId = default) :
+        
+        public OperationResult(ResultType type, List<string> messages, T result, string? traceId = default) :
             base(type, messages, traceId)
         {
-            Content = content;
+            Result = result;
         }
 
-        public T Content { get; }
+        public T Result { get; }
 
-        public static OperationResult<T> Valid(T content,
+        public static OperationResult<T> Valid(T result,
             List<string> messages = default, string traceId = null)
-        => new(ResultType.Success, messages ?? new List<string>(), content, traceId);
+        => new(ResultType.Success, messages ?? new List<string>(), result, traceId);
 
         public static OperationResult<T> UnValid(List<string> messages, string traceId = null)
         => new(ResultType.Failure, messages, default, traceId);

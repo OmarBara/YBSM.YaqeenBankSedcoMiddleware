@@ -2,18 +2,16 @@
 using Core.Domain.Enum;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using YBSM.Core.Domain.Entities;
 
 namespace HRM.Persistence
 {
     public class AppDbContext : DbContext
     {
         public DbSet<User> Users { get; set; }
-        public DbSet<AuthSession> AuthSessions { get; set; }
-      /*  public DbSet<Category> Categories { get; set; }
-        public DbSet<StoreInfo> StoreInformation { get; set; }
-        public DbSet<Merchant> Merchants { get; set; }
-        public DbSet<ImageStore> ImageStores { get; set; }
-        public DbSet<Activity> Activities { get; set; }*/
+        public DbSet<AuthSession> AuthSessions { get; set; }      
+        public DbSet<LypayTransaction> LypayTransaction { get; set; }
+
 
         public AppDbContext()
         {
@@ -37,7 +35,7 @@ namespace HRM.Persistence
             modelBuilder.Entity<User>().HasData(
                 new User
                 {
-                    Email = "ahmed@email.com",
+                    Email = "bara@email.com",
                     Password = hasher,
                     CreatedDate = DateTime.UtcNow,
                     PhoneNumber = "0926032402",
@@ -46,7 +44,8 @@ namespace HRM.Persistence
                     Id = Guid.NewGuid(),
                 }
             );
-
+            modelBuilder.Entity<LypayTransaction>().HasNoKey();
+            // modelBuilder.Entity<LypayTransaction>().OwnsOne(x => x.F1);
 
             base.OnModelCreating(modelBuilder);
         }

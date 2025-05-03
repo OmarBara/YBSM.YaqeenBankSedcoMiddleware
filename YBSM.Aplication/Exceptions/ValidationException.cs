@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace GloboTicket.TicketManagement.Application.Exceptions
+namespace YBSM.YaqeenBankSedcoMiddleware.Application.Exceptions
 {
     public class ValidationException : ApplicationException
     {

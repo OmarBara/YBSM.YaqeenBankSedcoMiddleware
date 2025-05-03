@@ -17,17 +17,16 @@ namespace Infrastructure.Services
     {
         public static void AddServicesRegistration(this IServiceCollection services, IConfiguration configuration)
         {
+            
             services.AddTransient<UserServices>();
             services.AddTransient<SedcoServices>();
-
-            /* services.AddTransient<CategoryServices>();
-             services.AddTransient<StoreServices>();
-             services.AddTransient<MerchantServices>();
-             services.AddTransient<ActivityServices>();*/
-
+            services.AddTransient<LypayTransactionServices>();
 
             services.AddTransient<CacheProvider>();
             services.AddTransient<IPasswordHasher, PasswordHasher>();
+
+
+
 
 
             var emailConfig = configuration

@@ -20,8 +20,7 @@ namespace Web.API.Controllers
 
 
         [HttpPost("sign-in")]
-        public async Task<UserSigInResponseDto> SignIn(
-            UserSignInRequestDto userSignInRequestDto)
+        public async Task<UserSigInResponseDto> SignIn(UserSignInRequestDto userSignInRequestDto)
         {
             var userAgent = Request.Headers["User-Agent"].ToString()?.Trim();
             var remoteIpAddress = "";
@@ -35,19 +34,17 @@ namespace Web.API.Controllers
         }
 
         [HttpPost]
-        [Authorize]
-        public async Task<AddUserResponseDto> AddUser(
-            AddUserRequestDto addUserRequest)
+        //[Authorize]
+        public async Task<AddUserResponseDto> AddUser(AddUserRequestDto addUserRequest)
         {
             var user = CurrentUserModel.GetUser(User);
 
-            return await _userServices.AddUser(addUserRequest, user.UserId);
+            return await _userServices.AddUser(addUserRequest, Guid.NewGuid());
         }
 
         [HttpGet]
-        //[Authorize]
-        public async Task<List<UserInfoResponseDto>> Users(
-        )
+        [Authorize]
+        public async Task<List<UserInfoResponseDto>> Users()
         {
             return await _userServices.Users();
         }

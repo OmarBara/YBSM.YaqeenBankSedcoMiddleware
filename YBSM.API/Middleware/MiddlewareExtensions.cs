@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 
-namespace GloboTicket.TicketManagement.Api.Middleware
+namespace YBSM.YaqeenBankSedcoMiddleware.Api.Middleware
 {
     public static class MiddlewareExtensions
     {
