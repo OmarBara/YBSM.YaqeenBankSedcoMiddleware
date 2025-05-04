@@ -70,9 +70,9 @@ namespace YBSM.Infrastructure.Services.Services
                     // If no transactions match the criteria, return a result indicating "not found"
                     var notFoundItem = new TransactionResultItem
                     {
-                        Code = "E2",
+                        Code = "R4",
                         Message = "Transaction not found",
-                        TransactionType = null // No transaction means no type
+                       // TransactionType = null // No transaction means no type
                     };
                     var resultList = new List<TransactionResultItem> { notFoundItem };
                     // CHANGE: Returning OperationResult<List<TransactionResultItem>>.Valid because the lookup operation was successful, even if no match was found.
@@ -161,7 +161,7 @@ namespace YBSM.Infrastructure.Services.Services
                    );*/
                 }
 
-                bool isReversed = transactions.Any(t => t.MsgType == "1400");
+                bool isReversed = transactions.Any(t => t.MsgType == "1400" ||  t.MsgType == "1420");
 
                 if (isReversed)
                 {

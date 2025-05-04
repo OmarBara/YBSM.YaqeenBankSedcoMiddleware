@@ -9,6 +9,7 @@ using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Web.API.ExceptionHandler;
 using Web.API.Validatiors;
+using YBSM.API.Middleware;
 using YBSM.YaqeenBankSedcoMiddleware.Api.Middleware;
 
 namespace HRM.API
@@ -66,8 +67,18 @@ namespace HRM.API
                 options.AddPolicy("Open", builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             });
 
+            services
+            .AddControllers()
+            .AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.ContractResolver = new CapitalizePropertyNamesResolver();
+            });
 
-            
+            services.AddControllers()
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.PropertyNamingPolicy = null; // Use property names as defined in the DTOs
+                });
 
             /* services.Configure<ApiBehaviorOptions>(options =>
              {

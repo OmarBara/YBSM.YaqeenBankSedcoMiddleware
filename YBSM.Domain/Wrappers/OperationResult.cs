@@ -13,13 +13,13 @@ namespace Core.Domain.Wrappers
         public OperationResult(ResultType type, List<string> messages, string traceId = null)
         {
             Type = type;
-            Messages = messages;
-            TraceId = traceId;
+           /* Messages = messages;
+            TraceId = traceId;*/
         }
 
         public ResultType Type { get; }
-        public IReadOnlyList<string> Messages { get; } // Using IReadOnlyList for immutability
-        public string TraceId { get; set; }
+        //public IReadOnlyList<string> Messages { get; } // Using IReadOnlyList for immutability
+       // public string TraceId { get; set; }
 
         // Static factory methods for creating base OperationResult instances (often for operations without a specific data payload, or for errors)
         public static OperationResult Valid(List<string> messages = default, string traceId = null)
@@ -41,7 +41,7 @@ namespace Core.Domain.Wrappers
         // Properties must be public with getters/setters for JSON serialization
         public string Code { get; set; }
         public string Message { get; set; }
-        public string TransactionType { get; set; }
+        public string? TransactionType { get; set; }
     }
 
     // Modified generic class to hold a LIST of results (of type T) when successful
@@ -57,7 +57,8 @@ namespace Core.Domain.Wrappers
         {
             // Only set the Result list if the operation is successful.
             // This matches the common pattern where data payload is only present on success.
-            Result = type == ResultType.Success ? result : null;
+            //Result = type == ResultType.Success ? result : null;
+            Result = result;
         }
 
         // This property will hold the list of results.
@@ -71,8 +72,8 @@ namespace Core.Domain.Wrappers
         // Factory method for a successful operation with a list of results.
         // This is the method you'll use to create the response that matches the desired JSON structure.
         // T will be TransactionResultItem in this case.
-        public static OperationResult<T> Valid(List<T> result, List<string> messages = default, string traceId = null)
-            => new(ResultType.Success, messages ?? new List<string>(), result, traceId);
+        public static OperationResult<T> Valid(List<T> result, List<string> messages = default)
+            => new(ResultType.Success, messages ?? new List<string>(), result);
 
         // Factory methods for failure/tech error.
         // These reuse the base class logic for status and messages but return OperationResult<T>
