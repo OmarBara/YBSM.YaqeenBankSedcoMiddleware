@@ -3,6 +3,7 @@ using Core.Domain.Enum;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using YBSM.Core.Domain.Entities;
+using YBSM.Core.Domain.ModelDTO.ResponceDTO;
 
 namespace HRM.Persistence
 {
@@ -10,7 +11,7 @@ namespace HRM.Persistence
     {
         public DbSet<User> Users { get; set; }
         public DbSet<AuthSession> AuthSessions { get; set; }      
-        public DbSet<LypayTransaction> LypayTransaction { get; set; }
+        public DbSet<LypayTransactionDBResponceDto> LypayTransaction { get; set; }
 
 
         public AppDbContext()
@@ -45,6 +46,7 @@ namespace HRM.Persistence
                 }
             );
             modelBuilder.Entity<LypayTransaction>().HasNoKey();
+            modelBuilder.Entity<LypayTransactionDBResponceDto>().HasNoKey();
             // modelBuilder.Entity<LypayTransaction>().OwnsOne(x => x.F1);
 
             base.OnModelCreating(modelBuilder);
